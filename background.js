@@ -1,6 +1,6 @@
 function getMathces() {
 
-    var maxPageCount = 1;
+    var maxPageCount = 10;
     var currentMatchCount = 0;
     var fullArray = [];
 
@@ -127,6 +127,15 @@ function getMathces() {
     return fullArray;
 }
 
+function pad(num){
+    
+    num = parseInt(num);
+    
+    if(num < 10){
+        return "0" + num;
+    }else return "" + num;
+}
+
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     if (message.message === "notification") {
 
@@ -146,7 +155,7 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
                 type: "basic",
                 title: "UHC Reminder",
                 message: message.postObj.title,
-                contextMessage: "Game starts at " + message.postObj.hour + ":" + message.postObj.minutes,
+                contextMessage: "Game starts at " + pad(message.postObj.hour) + ":" + pad(message.postObj.minutes),
                 iconUrl: "icon.png"
             }, function() {
                 console.log("SHOWED REMINDER at " + new Date().getTime());
