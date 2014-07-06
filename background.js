@@ -199,7 +199,7 @@ chrome.alarms.create("", {
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
 
-
+    setTimeout(function(){}, 0);
     console.log("RUNNING ALARM");
 
     var fullArray = getMathces();

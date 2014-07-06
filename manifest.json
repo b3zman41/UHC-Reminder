@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "UHC Reminder",
     "description": "Will display upcoming UHC matches and let you schedule to remind you.",
-    "version": "1.0",
+    "version": "1.1",
     "icons": {
         "16": "icon16.png",
         "48": "icon48.png",

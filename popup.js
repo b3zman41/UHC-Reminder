@@ -58,7 +58,7 @@ function getDateStringFromSeconds(seconds) {
 
 function getNextID() {
 
-    notificationId++;
+    notificationId = getRandID();
 
     chrome.storage.local.set({notificationID: notificationId}, function() {
     });
@@ -67,6 +67,16 @@ function getNextID() {
 
     return notificationId;
 
+}
+
+function getRandID(){
+    var returnString = "";
+    
+    for(var i = 0; i < 5; i++){
+        returnString += "" + parseInt(Math.random() * 10);
+    }
+    
+    return returnString;
 }
 
 function addToTable(timeFrom, message, postObj) {
@@ -194,8 +204,6 @@ function updateData() {
             chrome.storage.local.get("match_" + i, function(items) {
 
                 for (var k in items) {
-
-                    console.log("I : " + i + ", K : " + k + ", current index : " + currentIndex);
 
                     var timeUntil = updateTimeDifferenceForTimestamp(items[k].time);
 
